@@ -4,6 +4,9 @@
             <div class="flex">
                 <h1 class="my-name">Javier Moncada</h1>
             </div>
+            <div class="">
+                <h3 class="my-title">Software Engineer</h3>
+            </div>
             <div class="d-flex flex-row p-2 just justify-content-evenly align-items-center myColGap">
                 <button
                     class="btn btn-outline-secondary btn-lg" 
@@ -47,19 +50,31 @@
     column-gap: 0.5rem;
 }
 
-
-.my-name {
+.my-title {
     display: flex;
-    padding: 5rem;
-    font-size: 3rem;
     color: #FFFFFF;
     text-align: center;
     justify-content: center;
     align-items: center;
-    border: 6px solid #FFFFFF;
     border-radius: 15px;
+    margin: 0%;
+}
+
+.my-name {
+    display: flex;
+    padding: 5rem;
+    font-size: 5rem;
+    color: #FFFFFF;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 8px solid #FFFFFF;
+    border-radius: 15px;
+    width: 800px;
+    height: 300px;
     max-width: 800px;
     min-width: 300px;
+    margin: 0%;
 }
 
 </style>

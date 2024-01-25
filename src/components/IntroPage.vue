@@ -10,15 +10,15 @@
             <div class="d-flex flex-row p-2 just justify-content-evenly align-items-center myColGap">
                 <button
                     class="btn btn-outline-secondary btn-lg" 
-                    @click.prevent="false"
+                    @click.prevent="setPage(1)"
                 >Projects</button>
                 <button
                     class="btn btn-outline-secondary btn-lg" 
-                    @click.prevent="false"
+                    @click.prevent="$emit('change-page', 2)"
                 >About Me</button>
                 <button
                     class="btn btn-outline-secondary btn-lg" 
-                    @click.prevent="false"
+                    @click.prevent="$emit('change-page', 3)"
                 >Contact</button>
             </div>
         </div>
@@ -27,6 +27,24 @@
 </template>
 
 <script>
+    export default {
+        props: {
+            page: {
+                type: Number,
+                required: true
+            }
+        },
+        data() {
+            return {
+            }
+        },
+        methods: {
+            setPage(page){
+                this.$emit('change-page', page)
+                document.title = this.pages[page].title
+            }
+        }
+    }
 
 </script>
 
@@ -75,6 +93,7 @@
     max-width: 800px;
     min-width: 300px;
     margin: 0%;
+    width: inherit;
 }
 
 </style>

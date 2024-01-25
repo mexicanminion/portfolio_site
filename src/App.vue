@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="main-color">
+        <IntroPage></IntroPage>
+    </div>
+    
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import IntroPage from './components/IntroPage.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        components: {
+            IntroPage 
+        },
+        created() {
+        },
+        data() {
+            return {
+                
+            }
+        },
+        methods: {
+            async getPages() {
+                let res = await fetch(`pages.json`);
+                let data = await res.json();
+
+                this.pages = data;
+            }
+        }
+    }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+
+.main-color {
+    background-color: #2db451;
+    height: 100vh;
 }
 </style>

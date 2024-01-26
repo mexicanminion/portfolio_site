@@ -14,11 +14,11 @@
                 >Projects</button>
                 <button
                     class="btn btn-outline-secondary btn-lg" 
-                    @click.prevent="$emit('change-page', 2)"
+                    @click.prevent="setPage(2)"
                 >About Me</button>
                 <button
                     class="btn btn-outline-secondary btn-lg" 
-                    @click.prevent="$emit('change-page', 3)"
+                    @click.prevent="setPage(3)"
                 >Contact</button>
             </div>
         </div>
@@ -28,12 +28,7 @@
 
 <script>
     export default {
-        props: {
-            page: {
-                type: Number,
-                required: true
-            }
-        },
+        props: [''],
         data() {
             return {
             }
@@ -41,7 +36,6 @@
         methods: {
             setPage(page){
                 this.$emit('change-page', page)
-                document.title = this.pages[page].title
             }
         }
     }

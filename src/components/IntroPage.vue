@@ -9,15 +9,15 @@
             </div>
             <div class="d-flex flex-row p-2 just justify-content-evenly align-items-center myColGap">
                 <button
-                    class="btn btn-outline-secondary btn-lg" 
+                    class="item" 
                     @click.prevent="setPage(1)"
                 >Projects</button>
                 <button
-                    class="btn btn-outline-secondary btn-lg" 
+                    class="item" 
                     @click.prevent="setPage(2)"
                 >About Me</button>
                 <button
-                    class="btn btn-outline-secondary btn-lg" 
+                    class="item" 
                     @click.prevent="setPage(3)"
                 >Contact</button>
             </div>

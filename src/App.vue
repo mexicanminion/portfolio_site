@@ -5,12 +5,12 @@
                 <div v-if="mainPage == 0">
                     <IntroPage
                     :page="pages"
-                    @change-page="mainPage = $event, isNavBold($event)"
+                    @change-page="changePage($event), isNavBold($event)"
                     />
                 </div>
                 <div v-if="mainPage == 1">
                     <ProjectsPage
-                    @change-page="mainPage = $event, isNavBold($event)"
+                    @change-page="changePage($event), isNavBold($event)"
                     />
                 </div>
                 <div v-if="mainPage == 2">
@@ -34,11 +34,11 @@
             </div>
         </section>
 
-        <nav v-show="mainPage != 0" class="myTest">
-            <a id="home" class="item" @click="mainPage = 0, isNavBold(0)">Home</a>
-            <a id="projects" class="item" @click="mainPage = 1, isNavBold(1)">Projects</a>
-            <a id="about me" class="item" @click="mainPage = 2, isNavBold(2)">About Me</a>
-            <a id="contact" class="item" @click="mainPage = 3, isNavBold(3)">Contact</a>
+        <nav v-show="!initLoad" class="myTest">
+            <a id="home" class="itemNav" @click="changePage(0), isNavBold(0)">Home</a>
+            <a id="projects" class="itemNav" @click="changePage(1), isNavBold(1)">Projects</a>
+            <a id="about me" class="itemNav" @click="changePage(2), isNavBold(2)">About Me</a>
+            <a id="contact" class="itemNav" @click="changePage(3), isNavBold(3)">Contact</a>
         </nav>
     </section>
 </template>
@@ -73,7 +73,8 @@
                 {
                     pageTitle: `Contact`,
                     number: 3
-                }]
+                }],
+                initLoad: true
             }
         },
         methods: {
@@ -84,20 +85,7 @@
                 this.pages = data;
             },
             setPageTitle(){
-                document.title = `Javier Moncada - ${this.pages[this.mainPage].pageTitle}`;
-            },
-            changeBgColor(){
-                let defaultColor = "#2db451";
-                let color = document.getElementById("mainColor").style.backgroundColor;
-                console.log(defaultColor,color);
-                if (color == '') {
-                    document.getElementById("mainColor").style.backgroundColor = defaultColor;
-                }
-                else if (color == defaultColor) {
-                    document.getElementById("mainColor").style.backgroundColor = "black";
-                } else {
-                    document.getElementById("mainColor").style.backgroundColor = "#2db451";
-                }
+                document.title = `Javier Moncada | ${this.pages[this.mainPage].pageTitle}`;
             },
             isNavBold(page){
                 for (let i = 0; i < this.pages.length; i++) {
@@ -106,6 +94,10 @@
                 if (this.mainPage == page) {
                     document.getElementById(this.pages[page].pageTitle.toLowerCase()).classList.add("bold");
                 }
+            },
+            changePage(page){
+                this.initLoad = false;
+                this.mainPage = page;
             }
         },
         watch: {
@@ -113,22 +105,32 @@
                 if (this.mainPage == oldPage) {
                     this.setPageTitle(this.pages[0]);
                 }
-            },
+            }
         }
     }
 </script>
 
-<style scoped>
+<style>
 
-.item {
+.itemNav {
     color: #FFFFFF;
     background: none;
     font-size: 1.5rem;
     display: inline-block;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 10px;
     transition-duration: .5s;
     text-decoration: none;
+}
+
+.item{
+    color: #FFFFFF;
+    background: none;
+    font-size: 2rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 15px;
+    transition-duration: .5s;
+    border: none ;
 }
 
 .bold {
@@ -138,8 +140,14 @@
 .item:hover{
     color: black;
     cursor: pointer;
+    background: #ffffff74;
+    border-radius: 2rem;
 }
 
+.itemNav:hover{
+    color: black;
+    cursor: pointer;
+}
 
 .myTest{
     display: flex;

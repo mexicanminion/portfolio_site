@@ -17,7 +17,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <h1>about Site</h1>
+                                <h1>About Site</h1>
                             </div>
                         </div>
                     </div>
